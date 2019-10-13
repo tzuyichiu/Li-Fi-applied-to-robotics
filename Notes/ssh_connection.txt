@@ -1,0 +1,65 @@
+Objective : remote control le robot with ssh connection and the Remote PC's keyboard + visualize the environment around the robot (step 7)
+
+0. Done take_control_robot.txt
+
+1. Start by connect the Remote PC to the robot on the same Wi-Fi. Be careful not to connect to Polytechnique...
+
+
+2. Find the robot and the Remote PC's IP adresses.
+Command : ifconfig on the PC et the robot.
+We can then see on the terminal:
+
+psc-inf17@pscinf17-Satellite-C650:~/Desktop/PSC-Lifi-X17$ ifconfig
+enp2s0    Link encap:Ethernet  HWaddr 00:26:6c:5f:43:c8  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2314 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2314 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:205081 (205.0 KB)  TX bytes:205081 (205.0 KB)
+
+wlp3s0    Link encap:Ethernet  HWaddr 00:26:b6:f1:6c:52  
+          inet addr:172.20.10.4  Bcast:172.20.10.15  Mask:255.255.255.240
+          inet6 addr: fe80::99b9:8879:59f:ac41/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:41562 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:28878 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:46214551 (46.2 MB)  TX bytes:3973217 (3.9 MB)
+
+Depending on the interface chosen, the IP address is the inet addr. In our case 172.20.10.4
+
+
+3. Connect to the robot via ssh
+$ ssh pi @ IP_ROBOT
+
+4. Open another terminal and type the command:
+$ roscore
+
+The remote PC is then ready to launch ROS commands.
+
+
+5. In the terminal connect in ssh run:
+$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+The robot is now ready to receive commands from the PC.
+
+
+6. In a third terminal:
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+You can now move your robot with your keyboard! teleop is the reserved package for that.
+
+7. You can view the robot on Rviz in another terminal with the command:
+
+$ roslaunch turtlebot3_bringup turtlebot3_model.launch
+
+The red dots are the obstacles he detects (his head spinning).

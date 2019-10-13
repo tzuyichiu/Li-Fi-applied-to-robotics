@@ -1,0 +1,19 @@
+// The easiest way is to connect to a screen/keyboard/mouse with the raspberry.
+
+// You can then start the robot, you will have access to a desktop in the same way as on your Linux. You can then connect to the network as on your computer.
+
+// It is necessary to specify the IP of the remote PC, called ROS_MASTER_URI, the IP of the robot itself ROS_HOSTNAME and the model of the robot TURTLEBOT3_MODEL. These three variables must be exported in the ~/.bashrc:
+
+In a terminal:
+$ sudo nano ~/.bashrc
+
+Add at the end of the file that opens:
+
+$ export ROS_MASTER_URI = IP_REMOTE_PC
+$ export ROS_HOSTNAME = IP_ROBOT
+$ export TURTLEBOT3_MODEL = burger
+
+Do the same thing on the Remote PC: only the second line changes and becomes
+$ export ROS_HOSTNAME = IP_REMOTE_PC
+
+Once these settings are done you can go to ssh_connection.txt

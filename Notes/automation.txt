@@ -1,0 +1,13 @@
+How to create packages in /catkin_ws:
+http://wiki.ros.org/ROS/Tutorials/CreatingPackage
+
+Understanding topics:
+http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics
+
+Python publisher Subscirber stuffs:
+http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29
+https://www.youtube.com/watch?v=DLVyc9hOvk8&t=285s
+
+How to move a robot to a certain point using twist:
+https://www.youtube.com/watch?v=eJ4QPrYqMlw
+(The code turtlebot3_goal.py is adapted from this video)
